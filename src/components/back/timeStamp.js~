@@ -1,0 +1,79 @@
+import React from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchAsync, clear, postReport } from "../stores/hourReport";
+//import { fetchAsync, clear } from "../stores/gif";
+import {Form} from "react-bootstrap";
+
+function TimeStamp() {
+    const text = useSelector(state => state.hourReport.text);
+    const loading = useSelector(state => state.hourReport.loading);
+    const error = useSelector(state => state.hourReport.error);
+
+    const dispatch = useDispatch();
+
+    const input_text = "default";
+
+    return (
+    <div>
+      <h1 className="title">時報</h1>
+      <TimeStampForm {...{ text, loading,error }} />
+      <hr/>
+      <Form onSubmit = {() => dispatch(postReport(input_text))}>
+      <Form.Group controlId="exampleForm.ControlInput1">
+      <Form.Label>本日の目標</Form.Label>
+      <Form.Control type="text" placeholder="本日の目標" />
+      </Form.Group>
+      
+      <div className="buttons">
+        <button
+          className="button is-primary"
+          type = "submit"
+        >投稿</button>
+      </div>
+      </Form>
+    </div>
+	    );
+}
+
+function TimeStampForm({text,loading,error}){
+  if (error) {
+    return <p className="notification is-danger">Error!!</p>;
+  }
+  if (loading) {
+    return <p className="notification is-info">Loading...</p>;
+      }
+  if (!text) {
+    return <p className="notification">Welcome on!</p>;
+      }
+  return (
+    
+    <h1>{text}</h1>
+    
+	    );
+  
+}
+
+function Gif({ imageUrl, loading, error }) {
+    if (error) {
+	return <p className="notification is-danger">Error!!</p>;
+    }
+
+    if (loading) {
+	return <p className="notification is-info">Loading...</p>;
+    }
+
+    if (!imageUrl) {
+	return <p className="notification">Welcome!</p>;
+    }
+
+    return (
+    <figure>
+    <img src={imageUrl} alt="" />
+      <figcaption>
+        GIFs by <a href="https://giphy.com/">GIPHY</a>
+      </figcaption>
+    </figure>
+	    );
+}
+
+export default TimeStamp;
