@@ -14,7 +14,7 @@ function SlackForm({text}){
       console.log("success")
       return (
         <Card className="text-left">
-          <Card.Header>HRLog</Card.Header>
+          <Card.Header>HRLog-test</Card.Header>
           <Card.Body>
             <Form>
             <Form.Group controlId="exampleForm.ControlInput1">
