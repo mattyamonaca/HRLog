@@ -13,21 +13,26 @@ function SlackForm({text}){
     console.log(text)
       console.log("success")
       return (
-        <Card className="text-left">
-          <Card.Header>HRLog-test</Card.Header>
-          <Card.Body>
-            <Form>
-            <Form.Group controlId="exampleForm.ControlInput1">
-            <Form.Label>SlackのチャンネルIDを入力</Form.Label>
-            <Form.Control type="text" name = "text" placeholder="channel_id" onChange={handleInputChange}/>
-            </Form.Group>
-            
-            <Button variant="primary" type="submit" onClick={() => dispatch(fetchAsync(values.text))} >
-            Start
-            </Button>
-            </Form>
-          </Card.Body>
-        </Card>
+            <Card className="text-left" bg='light' >
+              <Card.Header as="h4" >HRLog</Card.Header>
+              <Card.Body>
+                <Card.Title>タイトル</Card.Title>
+                <Card.Text>
+                  <p>HRLogへようこそ！</p>
+                  <p>XXXXXXXXXXXXXXX説明文XXXXXXXXXXXXXXXXXXXX</p>
+                </Card.Text>
+                <Form>
+                <Form.Group controlId="exampleForm.ControlInput1">
+                <Form.Label>SlackのチャンネルIDを入力</Form.Label>
+                <Form.Control type="text" name = "text" placeholder="channel_id (例：C12345ABCDE)" onChange={handleInputChange}/>
+                </Form.Group>
+                
+                <Button variant="primary" type="submit" size="lg" block onClick={() => dispatch(fetchAsync(values.text))} >
+                　　解析を始める　　
+                </Button>
+                </Form>
+              </Card.Body>
+            </Card>
       );
   
     function handleInputChange(e) {
