@@ -6,26 +6,26 @@ import { PolarGrid,PolarAngleAxis,PolarRadiusAxis,Radar,Legend,RadarChart} from 
 
 function RadarGraph(item){
     console.log("radar")
-    console.log(item.item.user_info.user_name)
+    console.log(item.item.user_info.weekly_info)
 
     const data = [
         {
-            "subject":"ave_text_count", "rate" : item.item.user_info.ave_text_count,
+            "subject":"ave_text_count", "rate" : item.item.user_info.ave_text_count_rate,
         },
         {
-            "subject":"ave_text_length", "rate" : item.item.user_info.ave_text_length,
+            "subject":"ave_text_length", "rate" : item.item.user_info.ave_text_length_rate,
         },
         {
-            "subject":"from_reply_user_avg", "rate" : item.item.user_info.from_reply_user_avg,
+            "subject":"from_reply_user_avg", "rate" : item.item.user_info.from_reply_user_rate,
         },
         {
-            "subject":"reply_avg:", "rate" : item.item.user_info.reply_avg,
+            "subject":"reply_avg:", "rate" : item.item.user_info.reply_ave_rate,
         },
         {
-            "subject":"to_reply_user_avg", "rate" : item.item.user_info.to_reply_user_avg,
+            "subject":"to_reply_user_avg", "rate" : item.item.user_info.to_reply_user_rate,
         },
         {
-            "subject":"all_text_count", "rate" : 0.6,
+            "subject":"chat_count", "rate" : item.item.user_info.chat_count_rate
         },
     ]
 

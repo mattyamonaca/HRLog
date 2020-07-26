@@ -6,6 +6,7 @@ import UserList from "./UserList";
 
 import {makeReport} from "../stores/hourReport";
 
+
 function UserInfoList({user_info}){
     const dispatch = useDispatch();
     return (
@@ -45,6 +46,11 @@ function UserInfoList({user_info}){
 }
 
 function WeekSummary({item}){
+    const json_str = item.weekly_info.replace(/\'/g,'\"')
+    console.log(json_str)
+    const weekly_json_data = JSON.parse(json_str || "null")
+    console.log(weekly_json_data)
+    console.log("test")
     const data = [
         {name: '7/5', value: 12},
         {name: '7/6', value: 24},
@@ -57,8 +63,8 @@ function WeekSummary({item}){
     return(
     <div style={{ width: '100%', height: '100px' }}>
     <ResponsiveContainer>
-    <LineChart data={data}>
-        <XAxis dataKey="name"/>
+    <LineChart data={weekly_json_data["chat_count"]}>
+        <XAxis dataKey="date"/>
         <YAxis/>
         <CartesianGrid stroke="#eee" strokeDasharray="5 5"/>
         <Line type="monotone" dataKey="value" stroke="#8884d8" />
